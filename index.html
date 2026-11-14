@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="kk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Beauty — Сұлулық Салоны</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+    </style>
+</head>
+<body class="bg-[#FAF8F5] text-stone-800 antialiased">
+
+    <!-- Жоғарғы мәзір (Navbar) -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-stone-200/60 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl sm:text-3xl font-serif font-bold tracking-wider text-rose-950">
+                AURA <span class="text-rose-700 font-normal italic">Beauty</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
+                <a href="#catalog" class="hover:text-rose-900 transition">Қызметтер каталогы</a>
+                <a href="#about" class="hover:text-rose-900 transition">Біз туралы</a>
+                <a href="#contacts" class="hover:text-rose-900 transition">Байланыс</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="#" title="Instagram" class="w-9 h-9 rounded-full bg-stone-100 flex items-center justify-center text-stone-700 hover:bg-rose-900 hover:text-white transition">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                </a>
+                <a href="#" title="2GIS" class="w-9 h-9 rounded-full bg-stone-100 flex items-center justify-center text-stone-700 hover:bg-emerald-700 hover:text-white transition font-bold text-xs">
+                    2GIS
+                </a>
+                <a href="#" title="WhatsApp" class="w-9 h-9 rounded-full bg-stone-100 flex items-center justify-center text-stone-700 hover:bg-green-600 hover:text-white transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                </a>
+                <button onclick="openModal()" class="ml-1 bg-rose-950 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-rose-800 transition shadow-sm">
+                    Жазылу
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Басты экран (Hero Section) -->
+    <section class="relative overflow-hidden py-20 sm:py-28 px-4">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-rose-100/80 text-rose-900 text-xs font-semibold tracking-widest uppercase mb-6">
+                Премиум сұлулық кеңістігі
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-serif font-bold text-stone-900 leading-tight mb-6">
+                Табиғи сұлулығыңызды <span class="italic text-rose-900">ерекше</span> етіп ашамыз
+            </h1>
+            <p class="text-stone-600 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                Тәжірибелі шеберлер, заманауи техникалар және жайлы атмосфера. Өзіңізге деген қамқорлықты бүгіннен бастаңыз.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#catalog" class="bg-rose-950 text-white px-8 py-4 rounded-full font-medium hover:bg-rose-800 transition shadow-lg shadow-rose-950/15">
+                    Қызметтер мен бағалар
+                </a>
+                <button onclick="openModal()" class="bg-white text-stone-800 border border-stone-200 px-8 py-4 rounded-full font-medium hover:border-rose-900 hover:text-rose-900 transition">
+                    Онлайн жазылу
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Қызметтер каталогы (Прайс-лист) -->
+    <section id="catalog" class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 mb-3">Қызметтер каталогы</h2>
+            <p class="text-stone-500">Қажетті санатты таңдап, қызметтермен танысыңыз</p>
+        </div>
+
+        <!-- Санаттар сүзгісі (Filter Buttons) -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" id="filter-buttons">
+            <button onclick="filterServices('all', this)" class="filter-btn active bg-rose-950 text-white px-5 py-2.5 rounded-full text-sm font-medium transition">
+                Барлығы
+            </button>
+            <button onclick="filterServices('hair', this)" class="filter-btn bg-white text-stone-600 border border-stone-200 hover:border-rose-900 px-5 py-2.5 rounded-full text-sm font-medium transition">
+                Шаш күтімі
+            </button>
+            <button onclick="filterServices('nails', this)" class="filter-btn bg-white text-stone-600 border border-stone-200 hover:border-rose-900 px-5 py-2.5 rounded-full text-sm font-medium transition">
+                Маникюр & Педикюр
+            </button>
+            <button onclick="filterServices('cosmetology', this)" class="filter-btn bg-white text-stone-600 border border-stone-200 hover:border-rose-900 px-5 py-2.5 rounded-full text-sm font-medium transition">
+                Косметология
+            </button>
+            <button onclick="filterServices('makeup', this)" class="filter-btn bg-white text-stone-600 border border-stone-200 hover:border-rose-900 px-5 py-2.5 rounded-full text-sm font-medium transition">
+                Макияж & Қастар
+            </button>
+        </div>
+
+        <!-- Қызметтер тізімі (Grid) -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+            <!-- Шаш -->
+            <div class="service-card bg-white rounded-3xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition flex flex-col justify-between" data-category="hair">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-rose-800 bg-rose-50 px-3 py-1 rounded-full">Шаш күтімі</span>
+                        <span class="text-xs text-stone-400"><i class="fa-regular fa-clock mr-1"></i>60 мин</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-2">Сәнді шаш қию және укладка</h3>
+                    <p class="text-stone-500 text-sm mb-6">Бет пішініне сай шаш қию, жуу және кәсіби құралдармен сәндеу.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                    <span class="text-xl font-bold text-rose-950">8 000 ₸</span>
+                    <button onclick="openModal('Сәнді шаш қию және укладка')" class="bg-stone-100 hover:bg-rose-950 hover:text-white text-stone-800 px-4 py-2 rounded-xl text-sm font-semibold transition">
+                        Жазылу
+                    </button>
+                </div>
+            </div>
+
+            <div class="service-card bg-white rounded-3xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition flex flex-col justify-between" data-category="hair">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-rose-800 bg-rose-50 px-3 py-1 rounded-full">Шаш күтімі</span>
+                        <span class="text-xs text-stone-400"><i class="fa-regular fa-clock mr-1"></i>180 мин</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-2">Күрделі бояу (Airtouch / Балаяж)</h3>
+                    <p class="text-stone-500 text-sm mb-6">Шаш құрылымын сақтай отырып, табиғи ауысулармен бояу техникасы.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                    <span class="text-xl font-bold text-rose-950">25 000 ₸</span>
+                    <button onclick="openModal('Күрделі бояу (Airtouch)')" class="bg-stone-100 hover:bg-rose-950 hover:text-white text-stone-800 px-4 py-2 rounded-xl text-sm font-semibold transition">
+                        Жазылу
+                    </button>
+                </div>
+            </div>
+
+            <!-- Маникюр -->
+            <div class="service-card bg-white rounded-3xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition flex flex-col justify-between" data-category="nails">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full">Маникюр</span>
+                        <span class="text-xs text-stone-400"><i class="fa-regular fa-clock mr-1"></i>90 мин</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-2">Аппараттық маникюр + гель-лак</h3>
+                    <p class="text-stone-500 text-sm mb-6">Тырнақ тақтасын тегістеу, нығайту және сәнді түспен жабу.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                    <span class="text-xl font-bold text-rose-950">7 500 ₸</span>
+                    <button onclick="openModal('Аппараттық маникюр + гель-лак')" class="bg-stone-100 hover:bg-rose-950 hover:text-white text-stone-800 px-4 py-2 rounded-xl text-sm font-semibold transition">
+                        Жазылу
+                    </button>
+                </div>
+            </div>
+
+            <div class="service-card bg-white rounded-3xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition flex flex-col justify-between" data-category="nails">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full">Педикюр</span>
+                        <span class="text-xs text-stone-400"><i class="fa-regular fa-clock mr-1"></i>90 мин</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-2">Смарт-педикюр (толық күтім)</h3>
+                    <p class="text-stone-500 text-sm mb-6">Табанды арнайы дискілермен өңдеу, пилинг және гель-лак жабу.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                    <span class="text-xl font-bold text-rose-950">11 000 ₸</span>
+                    <button onclick="openModal('Смарт-педикюр')" class="bg-stone-100 hover:bg-rose-950 hover:text-white text-stone-800 px-4 py-2 rounded-xl text-sm font-semibold transition">
+                        Жазылу
+                    </button>
+                </div>
+            </div>
+
+            <!-- Косметология -->
+            <div class="service-card bg-white rounded-3xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition flex flex-col justify-between" data-category="cosmetology">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full">Косметология</span>
+                        <span class="text-xs text-stone-400"><i class="fa-regular fa-clock mr-1"></i>75 мин</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-2">Бет терісін кешенді тазарту</h3>
+                    <p class="text-stone-500 text-sm mb-6">Ультрадыбыстық және механикалық тазарту, тыныштандыратын маска.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                    <span class="text-xl font-bold text-rose-950">14 000 ₸</span>
+                    <button onclick="openModal('Бет терісін кешенді тазарту')" class="bg-stone-100 hover:bg-rose-950 hover:text-white text-stone-800 px-4 py-2 rounded-xl text-sm font-semibold transition">
+                        Жазылу
+                    </button>
+                </div>
+            </div>
+
+            <!-- Макияж -->
+            <div class="service-card bg-white rounded-3xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition flex flex-col justify-between" data-category="makeup">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-purple-800 bg-purple-50 px-3 py-1 rounded-full">Макияж & Қастар</span>
+                        <span class="text-xs text-stone-400"><i class="fa-regular fa-clock mr-1"></i>60 мин</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-2">Кешкі макияж + Қас сәндеу</h3>
+                    <p class="text-stone-500 text-sm mb-6">Тұрақты кешкі макияж және қасты пішінге келтіріп бояу.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                    <span class="text-xl font-bold text-rose-950">15 000 ₸</span>
+                    <button onclick="openModal('Кешкі макияж + Қас сәндеу')" class="bg-stone-100 hover:bg-rose-950 hover:text-white text-stone-800 px-4 py-2 rounded-xl text-sm font-semibold transition">
+                        Жазылу
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Артықшылықтар (Біз туралы) -->
+    <section id="about" class="bg-white py-16 px-4 border-y border-stone-200/60">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+            <div class="p-6">
+                <div class="w-14 h-14 bg-rose-50 text-rose-900 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">Тәжірибелі шеберлер</h3>
+                <p class="text-stone-500 text-sm">Әрбір маман өз саласында кемінде 4 жыл тәжірибесі бар сертификатталған шебер.</p>
+            </div>
+            <div class="p-6">
+                <div class="w-14 h-14 bg-rose-50 text-rose-900 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">100% Стерильділік</h3>
+                <p class="text-stone-500 text-sm">Барлық құралдар медициналық стандарттар бойынша көп сатылы зарарсыздандырудан өтеді.</p>
+            </div>
+            <div class="p-6">
+                <div class="w-14 h-14 bg-rose-50 text-rose-900 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">Премиум косметика</h3>
+                <p class="text-stone-500 text-sm">Тек әлемдік брендтердің түпнұсқа әрі қауіпсіз өнімдерін қолданамыз.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Байланыс бөлімі -->
+    <footer id="contacts" class="bg-stone-900 text-stone-300 py-16 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <h2 class="text-3xl font-serif text-white font-bold mb-2">AURA <span class="italic font-normal text-rose-300">Beauty</span></h2>
+                <p class="text-stone-400 text-sm mb-4">Күн сайын 10:00 – 21:00 аралығында жұмыс істейміз</p>
+                <p class="text-stone-400 text-sm"><i class="fa-solid fa-location-dot mr-2 text-rose-400"></i>Мекенжайыңыз осында жазылады</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" class="flex items-center gap-2 bg-stone-800 hover:bg-rose-900 text-white px-5 py-3 rounded-2xl transition text-sm font-medium">
+                    <i class="fa-brands fa-instagram text-lg"></i> Instagram
+                </a>
+                <a href="#" class="flex items-center gap-2 bg-stone-800 hover:bg-emerald-700 text-white px-5 py-3 rounded-2xl transition text-sm font-medium">
+                    <i class="fa-solid fa-map-pin text-lg"></i> 2GIS Карта
+                </a>
+                <a href="#" class="flex items-center gap-2 bg-stone-800 hover:bg-green-600 text-white px-5 py-3 rounded-2xl transition text-sm font-medium">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Онлайн жазылу терезесі (Modal) -->
+    <div id="bookingModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-stone-400 hover:text-stone-800 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-serif font-bold text-stone-900 mb-2">Онлайн жазылу</h3>
+            <p class="text-stone-500 text-sm mb-6">Мәліметтерді толтырыңыз, біз сізбен хабарласамыз</p>
+
+            <form onsubmit="submitBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Есіміңіз</label>
+                    <input type="text" id="clientName" required placeholder="Айгерім" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-rose-900 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Телефон нөміріңіз</label>
+                    <input type="tel" id="clientPhone" required placeholder="+7 (700) 000-00-00" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-rose-900 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Таңдалған қызмет</label>
+                    <input type="text" id="selectedService" value="Кеңес алу" class="w-full px-4 py-3 rounded-xl border border-stone-200 bg-stone-50 text-sm font-medium">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Күні</label>
+                        <input type="date" id="bookingDate" required class="w-full px-3 py-3 rounded-xl border border-stone-200 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Уақыты</label>
+                        <input type="time" id="bookingTime" required class="w-full px-3 py-3 rounded-xl border border-stone-200 text-sm">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-rose-950 text-white py-3.5 rounded-xl font-semibold hover:bg-rose-800 transition mt-2">
+                    Өтінім жіберу
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Санаттар бойынша сүзгілеу
+        function filterServices(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('bg-rose-950', 'text-white');
+                b.classList.add('bg-white', 'text-stone-600');
+            });
+            btn.classList.remove('bg-white', 'text-stone-600');
+            btn.classList.add('bg-rose-950', 'text-white');
+
+            document.querySelectorAll('.service-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Модальды терезені ашу/жабу
+        function openModal(serviceName = 'Жалпы жазылу') {
+            document.getElementById('selectedService').value = serviceName;
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function submitBooking(e) {
+            e.preventDefault();
+            alert('Рахмет! Сіздің өтініміңіз қабылданды.');
+            closeModal();
+        }
+    </script>
+</body>
+</html>
